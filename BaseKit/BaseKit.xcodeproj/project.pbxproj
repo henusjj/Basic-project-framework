@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		454709E72199556500891BF5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454709E52199556500891BF5 /* Reachability.m */; };
+		454709ED219AB5F100891BF5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454709EC219AB5F100891BF5 /* HomeViewController.m */; };
+		454709F0219AB5FA00891BF5 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454709EF219AB5FA00891BF5 /* MineViewController.m */; };
+		454709F3219AB60300891BF5 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454709F2219AB60300891BF5 /* OtherViewController.m */; };
+		454709F6219AB67700891BF5 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454709F5219AB67700891BF5 /* MainTabBarController.m */; };
 		4571FE362195690800F84B6D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4571FE352195690800F84B6D /* ViewController.m */; };
 		4571FE3A21958A6700F84B6D /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4571FE3921958A6700F84B6D /* APIManager.m */; };
 		4571FE3D2195907C00F84B6D /* AllUrlrequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4571FE3C2195907C00F84B6D /* AllUrlrequest.m */; };
@@ -51,6 +55,14 @@
 		3BA5B18EB59803A23BAFC59D /* Pods-BaseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseKit/Pods-BaseKit.release.xcconfig"; sourceTree = "<group>"; };
 		454709E52199556500891BF5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		454709E62199556500891BF5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		454709EB219AB5F100891BF5 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		454709EC219AB5F100891BF5 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		454709EE219AB5FA00891BF5 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		454709EF219AB5FA00891BF5 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		454709F1219AB60300891BF5 /* OtherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
+		454709F2219AB60300891BF5 /* OtherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
+		454709F4219AB67700891BF5 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		454709F5219AB67700891BF5 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		4571FE342195690800F84B6D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4571FE352195690800F84B6D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4571FE3821958A6700F84B6D /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -127,6 +139,33 @@
 			path = "Reachability-判断网络状态";
 			sourceTree = "<group>";
 		};
+		454709E8219AB5AD00891BF5 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				454709EB219AB5F100891BF5 /* HomeViewController.h */,
+				454709EC219AB5F100891BF5 /* HomeViewController.m */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		454709E9219AB5B800891BF5 /* Minepage */ = {
+			isa = PBXGroup;
+			children = (
+				454709EE219AB5FA00891BF5 /* MineViewController.h */,
+				454709EF219AB5FA00891BF5 /* MineViewController.m */,
+			);
+			path = Minepage;
+			sourceTree = "<group>";
+		};
+		454709EA219AB5C500891BF5 /* OtherPage */ = {
+			isa = PBXGroup;
+			children = (
+				454709F1219AB60300891BF5 /* OtherViewController.h */,
+				454709F2219AB60300891BF5 /* OtherViewController.m */,
+			);
+			path = OtherPage;
+			sourceTree = "<group>";
+		};
 		4571FE3721958A3A00F84B6D /* BaseNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,10 +204,10 @@
 			children = (
 				45EF90DA2194121500EF0E94 /* HomeHome */,
 				45EF90D621940EA600EF0E94 /* BaseVC */,
+				4571FE3721958A3A00F84B6D /* BaseNetworking */,
 				45EF90E1219412AF00EF0E94 /* Class */,
 				45EF90E3219412E600EF0E94 /* Resource */,
 				45EF90E2219412CC00EF0E94 /* Lib */,
-				4571FE3721958A3A00F84B6D /* BaseNetworking */,
 				45EF90E42194131000EF0E94 /* Config */,
 			);
 			path = BaseKit;
@@ -199,6 +238,8 @@
 				45EF90D821940EBD00EF0E94 /* BaseController.m */,
 				45EF90F021955AFF00EF0E94 /* BaseNavController.h */,
 				45EF90F121955AFF00EF0E94 /* BaseNavController.m */,
+				454709F4219AB67700891BF5 /* MainTabBarController.h */,
+				454709F5219AB67700891BF5 /* MainTabBarController.m */,
 			);
 			path = BaseVC;
 			sourceTree = "<group>";
@@ -219,6 +260,9 @@
 		45EF90E1219412AF00EF0E94 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				454709EA219AB5C500891BF5 /* OtherPage */,
+				454709E9219AB5B800891BF5 /* Minepage */,
+				454709E8219AB5AD00891BF5 /* HomePage */,
 				4571FE342195690800F84B6D /* ViewController.h */,
 				4571FE352195690800F84B6D /* ViewController.m */,
 			);
@@ -497,15 +541,19 @@
 			files = (
 				45EF90DD2194127100EF0E94 /* AppDelegate+AppService.m in Sources */,
 				45EF90E02194129500EF0E94 /* AppDelegate+RootController.m in Sources */,
+				454709F0219AB5FA00891BF5 /* MineViewController.m in Sources */,
 				4571FE3A21958A6700F84B6D /* APIManager.m in Sources */,
 				454709E72199556500891BF5 /* Reachability.m in Sources */,
+				454709F3219AB60300891BF5 /* OtherViewController.m in Sources */,
 				4571FE362195690800F84B6D /* ViewController.m in Sources */,
 				45EF90B421940E6E00EF0E94 /* main.m in Sources */,
 				4571FE3D2195907C00F84B6D /* AllUrlrequest.m in Sources */,
 				45EF90D921940EBD00EF0E94 /* BaseController.m in Sources */,
 				45EF90F221955AFF00EF0E94 /* BaseNavController.m in Sources */,
+				454709F6219AB67700891BF5 /* MainTabBarController.m in Sources */,
 				45EF90EF2195540A00EF0E94 /* NetPort.m in Sources */,
 				45EF90A621940E6C00EF0E94 /* AppDelegate.m in Sources */,
+				454709ED219AB5F100891BF5 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

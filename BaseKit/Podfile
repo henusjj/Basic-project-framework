@@ -24,4 +24,6 @@ target 'BaseKit' do
    pod 'WebViewJavascriptBridge'
    pod 'Toast'
    pod 'MJRefresh'
+   
+   pod 'CYLTabBarController','~> 1.17.4'
 end

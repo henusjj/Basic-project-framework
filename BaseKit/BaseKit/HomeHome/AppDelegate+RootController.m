@@ -12,8 +12,9 @@
 -(void)initWithRootView{
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor=[UIColor whiteColor];
-    ViewController *vc =[[ViewController alloc]init];
-    self.window.rootViewController=vc;
+    MainTabBarController *vc =[[MainTabBarController alloc]init];
+    CYLTabBarController *tabVc = vc.mainViewController;
+    self.window.rootViewController=tabVc;
     [self.window makeKeyAndVisible];
 }
 @end

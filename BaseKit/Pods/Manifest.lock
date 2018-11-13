@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CYLTabBarController (1.17.21)
   - Masonry (1.1.0)
   - MJRefresh (3.1.15.7)
   - SDWebImage (3.8.2):
@@ -24,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CYLTabBarController (~> 1.17.4)
   - Masonry
   - MJRefresh
   - SDWebImage (~> 3.8)
@@ -33,6 +35,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - CYLTabBarController
     - Masonry
     - MJRefresh
     - SDWebImage
@@ -41,12 +44,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CYLTabBarController: 56cd8b03847c6beb81184601df6a7933cd94be82
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 8379d312a66546b2121804a8076f99f27409281b
+PODFILE CHECKSUM: ca5c0bd5ce0c8c7b64028a5db537e95378199cea
 
 COCOAPODS: 1.5.3

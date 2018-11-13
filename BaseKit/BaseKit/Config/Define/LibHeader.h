@@ -23,6 +23,7 @@
 #import "UIImageView+WebCache.h"
 #import "WebViewJavascriptBridgeBase.h"
 #import "Toast.h"
+#import "CYLTabBarController.h"
 
 
 #endif /* LibHeader_h */
