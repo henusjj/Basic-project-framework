@@ -37,6 +37,31 @@
     if (!_tableview) {
         _tableview = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         
+        if (@available(iOS 11.0, *)) {
+            self.tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+        
+        _tableview.showsVerticalScrollIndicator = NO;
+        _tableview.estimatedRowHeight = 0;
+        _tableview.estimatedSectionFooterHeight = 0;
+        _tableview.estimatedSectionHeaderHeight = 0;
+        _tableview.scrollsToTop = YES;
+        _tableview.separatorStyle = UITableViewCellSelectionStyleNone;
+        
+//        头部刷新
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRerefsh)];
+        header.automaticallyChangeAlpha =YES;
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _tableview.mj_header = header;
+        
+//        底部刷新
+        _tableview.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRerefsh)];
+        _tableview.mj_footer.ignoredScrollViewContentInsetBottom = 30;
+        
+    
+        
     }
     return _tableview;
 }
@@ -45,6 +70,23 @@
     if (!_collectionview) {
         UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
         _collectionview = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+        
+        if (@available(iOS 11.0, *)) {
+            self.collectionview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+        
+        _collectionview.scrollsToTop = YES;
+        //        头部刷新
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRerefsh)];
+        header.automaticallyChangeAlpha =YES;
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _collectionview.mj_header = header;
+        
+        //        底部刷新
+        _collectionview.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRerefsh)];
+        _collectionview.mj_footer.ignoredScrollViewContentInsetBottom = 30;
         
     }
     return _collectionview;
