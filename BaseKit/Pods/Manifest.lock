@@ -22,6 +22,9 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - Toast (4.0.0)
   - WebViewJavascriptBridge (6.0.3)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking
@@ -31,6 +34,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8)
   - Toast
   - WebViewJavascriptBridge
+  - YYKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -41,6 +45,7 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - WebViewJavascriptBridge
+    - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -50,7 +55,8 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: ca5c0bd5ce0c8c7b64028a5db537e95378199cea
+PODFILE CHECKSUM: 9b95265c358898a168aa21be0cbb64c661b632c6
 
 COCOAPODS: 1.5.3

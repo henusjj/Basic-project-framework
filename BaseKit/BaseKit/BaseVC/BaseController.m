@@ -1,6 +1,6 @@
 //
 //  BaseController.m
-//  BaseKit
+//  Trandemo
 //
 //  Created by GuoYanjun on 2018/11/8.
 //  Copyright © 2018年 shiyujin. All rights reserved.
@@ -24,6 +24,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
+    //    是否显示返回按钮
+    self.isShowLiftBack = YES;
+    //
     
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -33,6 +36,39 @@
     [super viewDidDisappear:animated];
 }
 
+/**
+ 是否显示返回按钮
+ 
+ @param isShowLiftBack isShowLiftBack description
+ */
+- (void)setIsShowLiftBack:(BOOL)isShowLiftBack{
+    _isShowLiftBack = isShowLiftBack;
+    NSInteger VCCount = self.navigationController.viewControllers.count;
+    //下面判断的意义是 当VC所在的导航控制器中的VC个数大于1 或者 是present出来的VC时，才展示返回按钮，其他情况不展示
+    if (isShowLiftBack && ( VCCount > 1 || self.navigationController.presentingViewController != nil)) {
+        
+        UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnClicked)];
+        self.navigationItem.leftBarButtonItem = left;
+        self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
+        
+    } else {
+        self.navigationItem.hidesBackButton = YES;
+        UIBarButtonItem * NULLBar=[[UIBarButtonItem alloc]initWithCustomView:[UIView new]];
+        self.navigationItem.leftBarButtonItem = NULLBar;
+    }
+}
+- (void)backBtnClicked
+{
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+
+#pragma mark lazy
 -(UITableView *)tableview{
     if (!_tableview) {
         _tableview = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -50,17 +86,17 @@
         _tableview.scrollsToTop = YES;
         _tableview.separatorStyle = UITableViewCellSelectionStyleNone;
         
-//        头部刷新
+        //        头部刷新
         MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRerefsh)];
         header.automaticallyChangeAlpha =YES;
         header.lastUpdatedTimeLabel.hidden = YES;
         _tableview.mj_header = header;
         
-//        底部刷新
+        //        底部刷新
         _tableview.mj_footer = [MJRefreshBackFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRerefsh)];
         _tableview.mj_footer.ignoredScrollViewContentInsetBottom = 30;
         
-    
+        
         
     }
     return _tableview;
@@ -92,4 +128,11 @@
     return _collectionview;
 }
 
+-(void)headerRerefsh{
+    
+}
+
+-(void)footerRerefsh{
+    
+}
 @end

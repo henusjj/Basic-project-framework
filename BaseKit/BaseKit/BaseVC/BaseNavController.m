@@ -1,6 +1,6 @@
 //
 //  BaseNavController.m
-//  BaseKit
+//  Trandemo
 //
 //  Created by GuoYanjun on 2018/11/9.
 //  Copyright © 2018年 shiyujin. All rights reserved.
@@ -8,42 +8,87 @@
 
 #import "BaseNavController.h"
 
-@interface BaseNavController ()<UIGestureRecognizerDelegate,UINavigationBarDelegate>
+@interface BaseNavController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 
+@property (nonatomic, weak) id popDelegate;
+@property (nonatomic,strong) UIPercentDrivenInteractiveTransition *interactivePopTransition;
+@property (nonatomic,strong) UIScreenEdgePanGestureRecognizer *popRecognizer;
+@property(nonatomic,assign) BOOL isSystemSlidBack;//是否开启系统右滑返回
 @end
 
 @implementation BaseNavController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    Nav的主题背景色
+    //    Nav的主题背景色
+    [self.navigationBar setBarTintColor:[UIColor colorWithHexString:@"00AE68"]];
+    
+    //    Nav的主题字体大小和颜色
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithHexString:@"ffffff"], NSFontAttributeName : [UIFont systemFontOfSize:18]}];
+    
+    self.popDelegate = self.interactivePopGestureRecognizer.delegate;
+    self.delegate = self;
+    
+    //默认开启系统右划返回
+    self.interactivePopGestureRecognizer.enabled = YES;
+    self.interactivePopGestureRecognizer.delegate = self;
+    
+    //只有在使用转场动画时，禁用系统手势，开启自定义右划手势
+    _popRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNavigationTransition:)];
+    //下面是全屏返回
+    //        _popRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNavigationTransition:)];
+    _popRecognizer.edges = UIRectEdgeLeft;
+    [_popRecognizer setEnabled:NO];
+    [self.view addGestureRecognizer:_popRecognizer];
     
     
-//    Nav的主题字体大小和颜色
     
-    
-//------    Nav的系统返回手势   -------
-    self.interactivePopGestureRecognizer.delegate=self;
-//    获取系统自带滑动手势的target对象
-    id taager = self.interactivePopGestureRecognizer.delegate;
-//    创建全屏滑动手势，调用系统自带滑动手势的target的action方法
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:taager action:@selector(hanleNavtionTransition:)];
-//    设置手势代理，拦截手势触发
-    pan.delegate=self;
-//    给导航控制机器添加全屏滑动手势
-    [self.view addGestureRecognizer:pan];
-//    禁止使用系统自带的滑动手势
-    self.interactivePopGestureRecognizer.enabled = NO;
+}
+#pragma mark UIGestureRecognizer handlers
 
+- (void)handleNavigationTransition:(UIScreenEdgePanGestureRecognizer*)recognizer
+{
+    CGFloat progress = [recognizer translationInView:self.view].x / (self.view.bounds.size.width);
+    //    progress = MIN(1.0, MAX(0.0, progress));
+    //    NSLog(@"右划progress %.2f",progress);
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.interactivePopTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+        [self popViewControllerAnimated:YES];
+    }
+    else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        [self.interactivePopTransition updateInteractiveTransition:progress];
+    }
+    else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled) {
+        CGPoint velocity = [recognizer velocityInView:recognizer.view];
+        
+        if (progress > 0.5 || velocity.x >100) {
+            [self.interactivePopTransition finishInteractiveTransition];
+        }
+        else {
+            [self.interactivePopTransition cancelInteractiveTransition];
+        }
+        self.interactivePopTransition = nil;
+    }
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (self.childViewControllers.count<2) {
-        return NO;
+    return self.childViewControllers.count == 1 ? NO : YES;
+    
+}
+
+//解决手势失效问题
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (_isSystemSlidBack) {
+        self.interactivePopGestureRecognizer.enabled = YES;
+        [_popRecognizer setEnabled:NO];
     }else{
-        return YES;
+        self.interactivePopGestureRecognizer.enabled = NO;
+        [_popRecognizer setEnabled:YES];
     }
 }
+//push时隐藏tabbar
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.viewControllers.count>0) {

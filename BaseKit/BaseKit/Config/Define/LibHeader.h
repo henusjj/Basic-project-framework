@@ -24,6 +24,6 @@
 #import "WebViewJavascriptBridgeBase.h"
 #import "Toast.h"
 #import "CYLTabBarController.h"
-
+#import "YYKit.h"
 
 #endif /* LibHeader_h */

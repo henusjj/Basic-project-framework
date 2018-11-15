@@ -24,7 +24,8 @@
         UIEdgeInsets imagesInsets = UIEdgeInsetsZero;
         UIOffset titlePosition =UIOffsetZero;
         _mainViewController = [[CYLTabBarController alloc]initWithViewControllers:[self arryViewcontrollers] tabBarItemsAttributes:[self arrayAttributesItem] imageInsets:imagesInsets titlePositionAdjustment:titlePosition];
-        
+        [_mainViewController setTintColor:[UIColor colorWithHexString:@"00AE68"]];
+
     }
     return _mainViewController;
 }

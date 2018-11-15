@@ -26,4 +26,6 @@ target 'BaseKit' do
    pod 'MJRefresh'
    
    pod 'CYLTabBarController','~> 1.17.4'
+   
+   pod 'YYKit'
 end
