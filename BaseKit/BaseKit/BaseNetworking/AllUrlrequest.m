@@ -25,6 +25,8 @@
 //登录2
 -(void)LoginRequest{
     [APIManager manager].delegate = self;
+    
+    [APIManager manager].
     NSString *url = @"https://www.baidu.com";
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     [dic setValue:@"app" forKey:@"13"];
