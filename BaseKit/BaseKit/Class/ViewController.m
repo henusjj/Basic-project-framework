@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<responseDelegate>
+@interface ViewController ()<responseDelegate,responseDelegates>
 @end
 
 @implementation ViewController
@@ -17,7 +17,8 @@
     [super viewDidLoad];
     [self loadData];
     
-    
+//    或者
+    [self initData];
     
 }
 -(void)loadData{
@@ -25,7 +26,18 @@
     NetRequest.delegate =self;
     [NetRequest LoginRequest];
 }
+
+-(void)initData{
+    [APIManager manager].delegate=self;
     
+    [[APIManager manager] postWithUrl:@"" paramWithDic:@""];
+}
+//delegate
+-(void)requestSucesses:(id)responseData{
+}
+-(void)requestError:(NSError *)error{
+}
+
 /*
 #pragma mark - Navigation
 

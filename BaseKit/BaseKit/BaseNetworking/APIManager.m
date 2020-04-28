@@ -32,13 +32,6 @@
 
 -(void)GET:(NSString *)url andWithParam:(NSMutableDictionary *)param{
         AFHTTPSessionManager * manager = self.managers;
-//    AFHTTPSessionManager * managers = [AFHTTPSessionManager manager];
-//    managers.requestSerializer = [AFHTTPRequestSerializer serializer];
-//    managers.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    //超时时间
-//    managers.requestSerializer.timeoutInterval = TimeOutInterval;
-//    managers.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
-    
     
     //判断网络状态
     NetworkStatus netStatu = [self getNetworkStatus];
